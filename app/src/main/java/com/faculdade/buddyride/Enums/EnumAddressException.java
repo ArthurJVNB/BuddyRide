@@ -1,4 +1,4 @@
-package com.faculdade.buddyride.Exceptions;
+package com.faculdade.buddyride.Enums;
 
 public enum EnumAddressException {
     // TODO insert exceptions names
