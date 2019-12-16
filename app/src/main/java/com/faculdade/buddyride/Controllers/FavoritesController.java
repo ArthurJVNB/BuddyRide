@@ -8,7 +8,7 @@ import com.faculdade.buddyride.Repositories.FavoriteAddressRepositoryArrayList;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FavoritesController implements IFavoritesController {
+class FavoritesController implements IFavoritesController {
     private FavoriteAddressRepositoryArrayList mRepository;
 
     // ---------------------- SINGLETON ----------------------

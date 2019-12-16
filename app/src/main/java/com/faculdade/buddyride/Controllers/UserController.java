@@ -6,7 +6,7 @@ import com.faculdade.buddyride.Interfaces.IRepository;
 import com.faculdade.buddyride.Interfaces.IUserController;
 import com.faculdade.buddyride.Repositories.UserRepositoryArrayList;
 
-public class UserController implements IUserController {
+class UserController implements IUserController {
 
     private IRepository<User> mRepository;
 
