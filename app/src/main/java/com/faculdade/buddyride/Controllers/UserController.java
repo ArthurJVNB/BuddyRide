@@ -26,67 +26,67 @@ public class UserController implements IUserController {
     }
 
     @Override
-    public int getId() {
+    public int getId(User user) {
         return 0;
     }
 
     @Override
-    public String getName() {
+    public String getName(User user) {
         return null;
     }
 
     @Override
-    public String getSurname() {
+    public String getSurname(User user) {
         return null;
     }
 
     @Override
-    public String getProfileName() {
+    public String getProfileName(User user) {
         return null;
     }
 
     @Override
-    public String getEmail() {
+    public String getEmail(User user) {
         return null;
     }
 
     @Override
-    public Date getBirthDate() {
+    public Date getBirthDate(User user) {
         return null;
     }
 
     @Override
-    public void setName(String name) {
+    public void setName(User user, String name) {
 
     }
 
     @Override
-    public void setSurname(String surname) {
+    public void setSurname(User user, String surname) {
 
     }
 
     @Override
-    public void setProfileName(String profileName) {
+    public void setProfileName(User user, String profileName) {
 
     }
 
     @Override
-    public void setEmail(String email) {
+    public void setEmail(User user, String email) {
 
     }
 
     @Override
-    public void setBirthDate(Date birthDate) {
+    public void setBirthDate(User user, Date birthDate) {
 
     }
 
     @Override
-    public void setPassword(String password) {
+    public void setPassword(User user, String password) {
 
     }
 
     @Override
-    public boolean checkPassword(String password) {
+    public boolean checkPassword(User user, String password) {
         return false;
     }
 }

@@ -39,12 +39,51 @@ public class Facade {
         mUserRepository.add(user);
     }
 
-    public User getUser(int id) {
-        return mUserRepository.search(id);
+    public User getUser(int id) throws ControllerException {
+        User result = mUserRepository.search(id);
+
+        if (result == null) {
+            throw new ControllerException(EnumControllerException.USER_NOT_FOUND);
+        }
+
+        return result;
     }
 
-    public void updateUser(User user) {
-        mUserRepository.update(user);
+    // TODO talvez tirar esse aqui, pois creio que deveria trocar uma coisa por vez
+    public void updateUser(User user, String password) throws ControllerException {
+        if (user.checkPassword(password)) {
+            mUserRepository.update(user);
+        } else {
+            throw new ControllerException(EnumControllerException.INVALID_PASSWORD);
+        }
+    }
+
+    // TODO vou fazer aqui no padrão builder, onde possui a flexibilidade de fazer o update de quantas coisas a UI quiser
+    public class UpdateUser {
+        // ---------- Very simple SINGLETON ------------
+        private UpdateUser instance = new UpdateUser();
+        private UpdateUser() {}
+        // ---------------------------------------------
+
+        public UpdateUser changePassword(User user, String oldPassword, String newPassword) throws ControllerException {
+            if(user.checkPassword(oldPassword)) {
+                mUserController.setPassword(user, newPassword);
+            } else {
+                throw new ControllerException(EnumControllerException.INVALID_PASSWORD);
+            }
+
+            return this;
+        }
+
+        public UpdateUser setProfileName(User user, String name) {
+            mUserController.setProfileName(user, name);
+            return this;
+        }
+
+        public UpdateUser setBirthDate(User user, Date birthDate) {
+            mUserController.setBirthDate(user, birthDate);
+            return this;
+        }
     }
 
     public void removeUser(int id, String password) throws ControllerException {

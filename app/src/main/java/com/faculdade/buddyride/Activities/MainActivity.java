@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 
 import com.faculdade.buddyride.R;
+import com.faculdade.buddyride.TestActivities.TestActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -29,6 +30,15 @@ public class MainActivity extends AppCompatActivity {
                 //startActivity();
                 //finish();
                 return;
+            }
+        });
+
+        mPassenger.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // TODO retirar apos fazer os testes
+                Intent intent = new Intent(MainActivity.this, TestActivity.class);
+                startActivity(intent);
             }
         });
     }
