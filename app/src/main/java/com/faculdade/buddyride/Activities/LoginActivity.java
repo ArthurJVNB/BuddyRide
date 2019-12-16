@@ -1,17 +1,14 @@
 package com.faculdade.buddyride.Activities;
 
-
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
-import android.widget.Button;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
-
+import android.widget.Toast;
 import com.faculdade.buddyride.R;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
+
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -19,40 +16,69 @@ public class LoginActivity extends AppCompatActivity {
     private TextView mPassword;
     private TextView mForgotPassword;
     private TextView mSignUp;
-    private Button mSingIn;
-
-    private FirebaseAuth mAuth;
-    private FirebaseAuth.AuthStateListener mFireBaseAthListener;
-
-    /*
-     * FirebaseAuth.AuthStateListener is called when there is a change in the authentication state
-     * Right after the listener has been registered, when a user is signed in, when a current user
-     * is signed out, when the current user changes
-     * */
+    private ImageView mSingIn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        mAuth = FirebaseAuth.getInstance();
+        mSingIn = findViewById(R.id.button_signIn);
+        mSignUp = findViewById(R.id.textButton_singup);
+        mEmail = findViewById(R.id.email_field);
+        mPassword = findViewById(R.id.password_field);
+        mForgotPassword = findViewById(R.id.textButtonForgotPassword);
 
-        mFireBaseAthListener = new FirebaseAuth.AuthStateListener() {
+
+        //Navigating between LoginActivity and MainActivity
+        mSingIn.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-                FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-                //This variable stores information about the current logged user
+            public void onClick(View v) {
 
-                if(user != null){
-                    Intent intent = new Intent(LoginActivity.this, LoginActivity.class);
-                    //startActivity();
-                    //finish();
-                    return;
+                String catchEmail = mEmail.getText().toString();
+                String catchPassword = mPassword.getText().toString();
+
+                //TODO: Se usuário não existe no ArrayList exibir um Toast!
+                //TODO: Se senha estiver errada exibir um Toast!
+
+               //If some of the fields are empty, it'll show a toast message
+                if(catchEmail.isEmpty() || catchPassword.isEmpty()){
+                    showToast("Empty field. Try again.");
+                }else{
+                    //Do login
+                    startActivity(new Intent(LoginActivity.this, MainActivity.class));
                 }
 
             }
-        };
+        });
+
+        //Navigating between LoginActivity and SignUpActivity
+        mSignUp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(LoginActivity.this, SignUpActivity.class));
+            }
+        });
 
 
+        //Navigating between LoginActivity and RefactorPasswordActivity
+        mForgotPassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(LoginActivity.this, SecretQuestionActivity.class));
+            }
+        });
+
+    }//closing onCreate
+
+
+
+    private void showToast(String msg){
+        Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_LONG).show();
     }
-}
+
+
+}; //closing class
+
+
+
