@@ -61,4 +61,18 @@ public class UserController implements IUserController {
     public boolean exists(String id) {
         return mRepository.exists(id);
     }
+
+    @Override
+    public boolean checkPassword(String id, String password) throws UserControllerException {
+        boolean result;
+
+        if (mRepository.exists(id)) {
+            User user = mRepository.search(id);
+            result = user.checkPassword(password);
+        } else {
+            throw new UserControllerException(UserControllerException.EnumExceptionType.USER_NOT_FOUND);
+        }
+
+        return result;
+    }
 }
