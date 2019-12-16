@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.format.DateUtils;
 import android.text.style.TtsSpan;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -39,7 +40,17 @@ public class TestLogonActivity extends AppCompatActivity {
         mPasswordSecond = findViewById(R.id.test_password_second);
         mRegister = findViewById(R.id.test_register);
 
+        mBirthDate.setOnEditorActionListener(formateDate());
         mRegister.setOnClickListener(checkAndRegister());
+    }
+
+    private TextView.OnEditorActionListener formateDate() {
+        return new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                return false;
+            }
+        };
     }
 
     private View.OnClickListener checkAndRegister() {

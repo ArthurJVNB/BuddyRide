@@ -3,30 +3,18 @@ package com.faculdade.buddyride.Entities;
 import java.util.Date;
 
 public class User {
-    private int id;
     private String name;
-    private String lastname;
+    private String lastName;
     private Date birthDate;
     private String email;
-    private String profileName;
     private String password;
 
-    public User(int id, String name, String lastname, Date birthDate, String email, String profileName, String password) {
-        setId(id);
+    public User(String name, String lastName, Date birthDate, String email, String password) {
         setName(name);
-        setLastname(lastname);
+        setLastName(lastName);
         setBirthDate(birthDate);
         setEmail(email);
-        setProfileName(profileName);
         setPassword(password);
-    }
-
-    private void setId(int id) {
-        this.id = id;
-    }
-
-    public int getId() {
-        return id;
     }
 
     public String getName() {
@@ -37,20 +25,12 @@ public class User {
         this.name = name;
     }
 
-    public String getLastname() {
-        return lastname;
+    public String getLastName() {
+        return lastName;
     }
 
-    public void setLastname(String lastname) {
-        this.lastname = lastname;
-    }
-
-    public String getProfileName() {
-        return profileName;
-    }
-
-    public void setProfileName(String profileName) {
-        this.profileName = profileName;
+    public void setLastName(String lastname) {
+        this.lastName = lastname;
     }
 
     public Date getBirthDate() {
