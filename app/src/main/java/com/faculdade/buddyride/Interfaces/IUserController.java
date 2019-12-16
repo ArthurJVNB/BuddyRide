@@ -7,4 +7,5 @@ public interface IUserController {
     void registerUser(User user) throws UserControllerException;
     void updateUser(User user) throws UserControllerException;
     void removeUser(String email, String password) throws UserControllerException;
+    boolean exists(String id);
 }
