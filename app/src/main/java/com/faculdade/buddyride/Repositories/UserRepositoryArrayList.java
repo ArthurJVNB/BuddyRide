@@ -3,8 +3,6 @@ package com.faculdade.buddyride.Repositories;
 import androidx.annotation.NonNull;
 
 import com.faculdade.buddyride.Entities.User;
-import com.faculdade.buddyride.Exceptions.EnumRepositoryException;
-import com.faculdade.buddyride.Exceptions.RepositoryException;
 import com.faculdade.buddyride.Interfaces.IRepository;
 
 import java.util.ArrayList;
@@ -26,45 +24,29 @@ public class UserRepositoryArrayList implements IRepository<User> {
     }
 
     @Override
-    public void add(User user) throws RepositoryException {
-        try {
-            // if search() find something, we can't add the new user
-            search(user.getId());
-        } catch (RepositoryException e) {
-            // if search() throws an NOT_FOUND message, we can add the new user
-            if (e.getMessage().equals(EnumRepositoryException.NOT_FOUND.toString())) {
-                repository.add(user);
-            }
-
-        }
-        throw new RepositoryException(EnumRepositoryException.USER_ALREADY_EXISTS);
+    public void add(User user) {
+        repository.add(user);
     }
 
     @Override
-    public void remove(int id) throws RepositoryException{
-        try {
-            repository.remove(search(id));
-        } catch (RepositoryException e) {
-            throw e;
-        }
+    public void remove(int id) {
+        repository.remove(search(id));
     }
 
     @Override
-    public void update(User user) throws RepositoryException {
+    public void update(User user) {
         for (User currentUser : repository) {
             if (currentUser.getId() == user.getId()) {
                 int index = repository.indexOf(currentUser);
                 repository.set(index, user);
-                return;
+                break;
             }
         }
-
-        throw new RepositoryException(EnumRepositoryException.NOT_FOUND);
     }
 
     @NonNull
     @Override
-    public User search(int id) throws RepositoryException {
+    public User search(int id) {
         User result = null;
 
         for (User currentUser : repository) {
@@ -74,10 +56,17 @@ public class UserRepositoryArrayList implements IRepository<User> {
             }
         }
 
-        if (result == null) {
-            throw new RepositoryException(EnumRepositoryException.NOT_FOUND);
+        return result;
+    }
+
+    @Override
+    public boolean exists(int id) {
+        boolean result = false;
+
+        if (search(id) != null) {
+            result = true;
         }
 
-        return result;
+        return false;
     }
 }
