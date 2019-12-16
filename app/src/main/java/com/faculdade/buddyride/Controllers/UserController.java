@@ -8,11 +8,11 @@ import com.faculdade.buddyride.Repositories.UserRepositoryArrayList;
 
 public class UserController implements IUserController {
 
-    private IRepository<User> mUserRepository;
+    private IRepository<User> mRepository;
 
     // ---------------------- SINGLETON ----------------------
     private UserController() {
-        mUserRepository = UserRepositoryArrayList.getInstance();
+        mRepository = UserRepositoryArrayList.getInstance();
     }
 
     private static class Singleton {
@@ -27,15 +27,17 @@ public class UserController implements IUserController {
 
     @Override
     public void registerUser(User user) throws UserControllerException {
-        if (mUserRepository.exists(user.getEmail())) {
+        if (mRepository.exists(user.getEmail())) {
             throw new UserControllerException(UserControllerException.EnumExceptionType.USER_ALREADY_EXISTS);
-        } //TODO: ELSE!!
+        } else {
+            mRepository.add(user);
+        }
     }
 
     @Override
     public void updateUser(User user) throws UserControllerException {
-        if (mUserRepository.exists(user.getEmail())) {
-            mUserRepository.update(user);
+        if (mRepository.exists(user.getEmail())) {
+            mRepository.update(user);
         } else {
             throw new UserControllerException(UserControllerException.EnumExceptionType.USER_NOT_FOUND);
         }
@@ -43,15 +45,20 @@ public class UserController implements IUserController {
 
     @Override
     public void removeUser(String email, String password) throws UserControllerException {
-        if(!mUserRepository.exists(email)) {
+        if(!mRepository.exists(email)) {
             throw new UserControllerException(UserControllerException.EnumExceptionType.USER_NOT_FOUND);
         }
 
-        User user = mUserRepository.search(email);
+        User user = mRepository.search(email);
         if(user.checkPassword(password)) {
             throw new UserControllerException(UserControllerException.EnumExceptionType.INVALID_PASSWORD);
         }
 
-        mUserRepository.remove(email);
+        mRepository.remove(email);
+    }
+
+    @Override
+    public boolean exists(String id) {
+        return mRepository.exists(id);
     }
 }

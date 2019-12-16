@@ -6,13 +6,13 @@ public class FavoriteAddress {
     // Os atributos que estao como "final" eh porque nunca sao alterados.
     // Portanto para garantir isso, foi escolhido essa caracteristica.
     private final LatLng latitudeLongitude;
-    private final String userEmail;
+    private final String userId;
     private String addressNickname;
 
-    public FavoriteAddress(LatLng latitudeLongitude, String addressNickname, String userEmail) {
+    public FavoriteAddress(LatLng latitudeLongitude, String addressNickname, String userId) {
         this.latitudeLongitude = latitudeLongitude;
         this.addressNickname = addressNickname;
-        this.userEmail = userEmail;
+        this.userId = userId;
     }
 
     public LatLng getLatitudeLongitude() {
@@ -27,8 +27,8 @@ public class FavoriteAddress {
         this.addressNickname = addressNickname;
     }
 
-    public String getUserEmail() {
-        return userEmail;
+    public String getUserId() {
+        return userId;
     }
 
     public String getId() {

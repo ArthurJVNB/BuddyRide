@@ -1,19 +1,18 @@
 package com.faculdade.buddyride.Repositories;
 
-import androidx.annotation.NonNull;
-
 import com.faculdade.buddyride.Entities.User;
 import com.faculdade.buddyride.Interfaces.IRepository;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class UserRepositoryArrayList implements IRepository<User> {
 
-    private ArrayList<User> repository;
+    private ArrayList<User> mRepository;
 
     // ---------------------- SINGLETON ----------------------
     private UserRepositoryArrayList() {
-        repository = new ArrayList<>();
+        mRepository = new ArrayList<>();
     }
 
     private static class Singleton {
@@ -27,20 +26,20 @@ public class UserRepositoryArrayList implements IRepository<User> {
 
     @Override
     public void add(User user) {
-        repository.add(user);
+        mRepository.add(user);
     }
 
     @Override
     public void remove(String id) {
-        repository.remove(search(id));
+        mRepository.remove(search(id));
     }
 
     @Override
     public void update(User user) {
-        for (User currentUser : repository) {
+        for (User currentUser : mRepository) {
             if (currentUser.getId().equals(user.getId())) {
-                int index = repository.indexOf(currentUser);
-                repository.set(index, user);
+                int index = mRepository.indexOf(currentUser);
+                mRepository.set(index, user);
                 break;
             }
         }
@@ -50,7 +49,7 @@ public class UserRepositoryArrayList implements IRepository<User> {
     public User search(String id) {
         User result = null;
 
-        for (User currentUser : repository) {
+        for (User currentUser : mRepository) {
             if (currentUser.getId().equals(id)) {
                 result = currentUser;
                 break;
@@ -69,5 +68,10 @@ public class UserRepositoryArrayList implements IRepository<User> {
         }
 
         return result;
+    }
+
+    @Override
+    public List<User> list() {
+        return mRepository;
     }
 }
