@@ -9,6 +9,8 @@ import com.faculdade.buddyride.Interfaces.IRepository;
 import com.faculdade.buddyride.Interfaces.IUserController;
 import com.faculdade.buddyride.Repositories.UserRepositoryArrayList;
 
+import java.util.List;
+
 public class Facade {
 
     private IUserController mUserController;
@@ -57,5 +59,9 @@ public class Facade {
 
     public void updateFavoriteAddress (FavoriteAddress favorite) throws FavoritesControllerException {
         mFavoritesController.updateFavorite(favorite);
+    }
+
+    public List<FavoriteAddress> listUserFavoriteAddresses (String userId) throws FavoritesControllerException {
+        return mFavoritesController.listUserFavorites(userId);
     }
 }
