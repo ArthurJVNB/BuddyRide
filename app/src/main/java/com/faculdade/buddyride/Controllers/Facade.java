@@ -36,8 +36,23 @@ public class Facade {
         mUserController.registerUser(user);
     }
 
-    public void removeUser(String email, String password) throws UserControllerException {
-        mUserController.removeUser(email, password);
+    public void removeUser(String id, String password) throws UserControllerException {
+
+        // Removing all favorites
+        List<FavoriteAddress> listFavorites;
+
+        try {
+            listFavorites = listUserFavoriteAddresses(id);
+            for (FavoriteAddress favorite : listFavorites) {
+                mFavoritesController.removeFavorite(favorite);
+            }
+        } catch (FavoritesControllerException e) {
+            // entao eh porque nao haviam favoritos para esse usuario
+            e.printStackTrace();
+        }
+
+        // Removing user
+        mUserController.removeUser(id, password);
     }
 
     public void updateUser(User user) throws UserControllerException {
