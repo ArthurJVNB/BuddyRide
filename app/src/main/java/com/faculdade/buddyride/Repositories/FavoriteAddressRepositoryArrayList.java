@@ -4,12 +4,13 @@ import com.faculdade.buddyride.Entities.FavoriteAddress;
 import com.faculdade.buddyride.Interfaces.IRepository;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class FavoriteAddressRepositoryArrayList implements IRepository<FavoriteAddress> {
-    private ArrayList<FavoriteAddress> repository;
+    private ArrayList<FavoriteAddress> mRepository;
 
     private FavoriteAddressRepositoryArrayList() {
-        repository = new ArrayList<>();
+        mRepository = new ArrayList<>();
     }
 
     private static class Singleton {
@@ -22,21 +23,21 @@ public class FavoriteAddressRepositoryArrayList implements IRepository<FavoriteA
 
     @Override
     public void add(FavoriteAddress favoriteAddress) {
-        repository.add(favoriteAddress);
+        mRepository.add(favoriteAddress);
     }
 
     @Override
     public void remove(String id) {
         FavoriteAddress address = search(id);
-        repository.remove(address);
+        mRepository.remove(address);
     }
 
     @Override
     public void update(FavoriteAddress favoriteAddress) {
-        for (FavoriteAddress address : repository) {
+        for (FavoriteAddress address : mRepository) {
             if(address.getId().equals(favoriteAddress.getId())) {
-                int index = repository.indexOf(address);
-                repository.set(index, favoriteAddress);
+                int index = mRepository.indexOf(address);
+                mRepository.set(index, favoriteAddress);
             }
         }
     }
@@ -45,7 +46,7 @@ public class FavoriteAddressRepositoryArrayList implements IRepository<FavoriteA
     public FavoriteAddress search(String id) {
         FavoriteAddress result = null;
 
-        for (FavoriteAddress address : repository) {
+        for (FavoriteAddress address : mRepository) {
             if (address.getId().equals(id)) {
                 result = address;
                 break;
@@ -64,5 +65,10 @@ public class FavoriteAddressRepositoryArrayList implements IRepository<FavoriteA
         }
 
         return result;
+    }
+
+    @Override
+    public List<FavoriteAddress> list() {
+        return mRepository;
     }
 }
