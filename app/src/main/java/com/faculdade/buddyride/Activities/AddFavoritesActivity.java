@@ -64,11 +64,12 @@ public class AddFavoritesActivity extends AppCompatActivity {
                         facade.registerFavoriteAddress(favorite);
                     } catch (FavoritesControllerException e) {
 
-                        switch (e.getMessage()){
-
+                        String message = e.getMessage();
+                        if (message.equals(FavoritesControllerException.EnumExceptionType.INVALID_USER.toString())) {
+                            // TODO avisar que houve algum problema com usuario (talvez pedir pra fazer login de novo)
+                        } else {
+                            // TODO avisar que algo muito estranho aconteceu
                         }
-
-                        e.getMessage();
                     }
                     startActivity(new Intent(AddFavoritesActivity.this, MainActivity.class));
                 }
