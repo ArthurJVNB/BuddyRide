@@ -1,92 +1,57 @@
 package com.faculdade.buddyride.Controllers;
 
 import com.faculdade.buddyride.Entities.User;
+import com.faculdade.buddyride.Exceptions.UserControllerException;
+import com.faculdade.buddyride.Interfaces.IRepository;
 import com.faculdade.buddyride.Interfaces.IUserController;
-
-import java.util.Date;
+import com.faculdade.buddyride.Repositories.UserRepositoryArrayList;
 
 public class UserController implements IUserController {
 
-    // -------------------- SINGLETON ----------------------
-    private UserController() {}
+    private IRepository<User> mUserRepository;
+
+    // ---------------------- SINGLETON ----------------------
+    private UserController() {
+        mUserRepository = UserRepositoryArrayList.getInstance();
+    }
 
     private static class Singleton {
         static final UserController INSTANCE = new UserController();
     }
 
-    public static UserController getInstance() {
+    // Protegido para apenas o pacote ler. Isso garante que apenas o Facade irah chama-lo
+    static UserController getInstance() {
         return Singleton.INSTANCE;
     }
-    // ------------------------------------------------------
+    // -------------------------------------------------------
 
     @Override
-    public User create(int id, String name, String surname, Date birthDate, String email, String profileName, String password) {
-        User user = new User(id, name, surname, birthDate, email, profileName, password);
-        return user;
+    public void registerUser(User user) throws UserControllerException {
+        if (mUserRepository.exists(user.getEmail())) {
+            throw new UserControllerException(UserControllerException.EnumExceptionType.USER_ALREADY_EXISTS);
+        }
     }
 
     @Override
-    public int getId() {
-        return 0;
+    public void updateUser(User user) throws UserControllerException {
+        if (mUserRepository.exists(user.getEmail())) {
+            mUserRepository.update(user);
+        } else {
+            throw new UserControllerException(UserControllerException.EnumExceptionType.USER_NOT_FOUND);
+        }
     }
 
     @Override
-    public String getName() {
-        return null;
-    }
+    public void removeUser(String email, String password) throws UserControllerException {
+        if(!mUserRepository.exists(email)) {
+            throw new UserControllerException(UserControllerException.EnumExceptionType.USER_NOT_FOUND);
+        }
 
-    @Override
-    public String getSurname() {
-        return null;
-    }
+        User user = mUserRepository.search(email);
+        if(user.checkPassword(password)) {
+            throw new UserControllerException(UserControllerException.EnumExceptionType.INVALID_PASSWORD);
+        }
 
-    @Override
-    public String getProfileName() {
-        return null;
-    }
-
-    @Override
-    public String getEmail() {
-        return null;
-    }
-
-    @Override
-    public Date getBirthDate() {
-        return null;
-    }
-
-    @Override
-    public void setName(String name) {
-
-    }
-
-    @Override
-    public void setSurname(String surname) {
-
-    }
-
-    @Override
-    public void setProfileName(String profileName) {
-
-    }
-
-    @Override
-    public void setEmail(String email) {
-
-    }
-
-    @Override
-    public void setBirthDate(Date birthDate) {
-
-    }
-
-    @Override
-    public void setPassword(String password) {
-
-    }
-
-    @Override
-    public boolean checkPassword(String password) {
-        return false;
+        mUserRepository.remove(email);
     }
 }

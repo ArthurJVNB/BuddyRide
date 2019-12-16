@@ -3,30 +3,20 @@ package com.faculdade.buddyride.Entities;
 import java.util.Date;
 
 public class User {
-    private int id;
     private String name;
-    private String lastname;
+    private String lastName;
     private Date birthDate;
     private String email;
-    private String profileName;
     private String password;
+    private String secretQuestion;
+    private String secretQuestionAnswer;
 
-    public User(int id, String name, String lastname, Date birthDate, String email, String profileName, String password) {
-        setId(id);
+    public User(String name, String lastName, Date birthDate, String email, String password, String secretQuestion, String secretQuestionAnswer) {
         setName(name);
-        setLastname(lastname);
+        setLastName(lastName);
         setBirthDate(birthDate);
         setEmail(email);
-        setProfileName(profileName);
         setPassword(password);
-    }
-
-    private void setId(int id) {
-        this.id = id;
-    }
-
-    public int getId() {
-        return id;
     }
 
     public String getName() {
@@ -37,20 +27,12 @@ public class User {
         this.name = name;
     }
 
-    public String getLastname() {
-        return lastname;
+    public String getLastName() {
+        return lastName;
     }
 
-    public void setLastname(String lastname) {
-        this.lastname = lastname;
-    }
-
-    public String getProfileName() {
-        return profileName;
-    }
-
-    public void setProfileName(String profileName) {
-        this.profileName = profileName;
+    public void setLastName(String lastname) {
+        this.lastName = lastname;
     }
 
     public Date getBirthDate() {
@@ -73,7 +55,38 @@ public class User {
         this.password = password;
     }
 
+    private String getSecretQuestion() {
+        return secretQuestion;
+    }
+
+    public void setSecretQuestion(String secretQuestion) {
+        this.secretQuestion = secretQuestion;
+    }
+
+    private String getSecretQuestionAnswer() {
+        return secretQuestionAnswer;
+    }
+
+    public void setSecretQuestionAnswer(String secretQuestionAnswer) {
+        this.secretQuestionAnswer = secretQuestionAnswer;
+    }
+
+    public String getId() {
+        // o email eh o proprio id, mas pra evitar confusao, existe essa forma de pegar o id
+        return email;
+    }
+
     public boolean checkPassword(String password) {
         return this.password.equals(password);
+    }
+
+    public boolean checkSecretQuestion(String secretQuestion, String secretQuestionAnswer) {
+        boolean result = false;
+
+        if (this.secretQuestion.equals(secretQuestion) && this.secretQuestionAnswer.equals(secretQuestionAnswer)) {
+            result = true;
+        }
+
+        return result;
     }
 }

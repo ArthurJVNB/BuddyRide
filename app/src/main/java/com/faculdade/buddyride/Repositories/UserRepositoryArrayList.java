@@ -11,6 +11,7 @@ public class UserRepositoryArrayList implements IRepository<User> {
 
     private ArrayList<User> repository;
 
+    // ---------------------- SINGLETON ----------------------
     private UserRepositoryArrayList() {
         repository = new ArrayList<>();
     }
@@ -22,6 +23,7 @@ public class UserRepositoryArrayList implements IRepository<User> {
     public static UserRepositoryArrayList getInstance() {
         return Singleton.INSTANCE;
     }
+    // -------------------------------------------------------
 
     @Override
     public void add(User user) {
@@ -29,14 +31,14 @@ public class UserRepositoryArrayList implements IRepository<User> {
     }
 
     @Override
-    public void remove(int id) {
+    public void remove(String id) {
         repository.remove(search(id));
     }
 
     @Override
     public void update(User user) {
         for (User currentUser : repository) {
-            if (currentUser.getId() == user.getId()) {
+            if (currentUser.getId().equals(user.getId())) {
                 int index = repository.indexOf(currentUser);
                 repository.set(index, user);
                 break;
@@ -44,13 +46,12 @@ public class UserRepositoryArrayList implements IRepository<User> {
         }
     }
 
-    @NonNull
     @Override
-    public User search(int id) {
+    public User search(String id) {
         User result = null;
 
         for (User currentUser : repository) {
-            if (currentUser.getId() == id) {
+            if (currentUser.getId().equals(id)) {
                 result = currentUser;
                 break;
             }
@@ -60,13 +61,13 @@ public class UserRepositoryArrayList implements IRepository<User> {
     }
 
     @Override
-    public boolean exists(int id) {
+    public boolean exists(String id) {
         boolean result = false;
 
         if (search(id) != null) {
             result = true;
         }
 
-        return false;
+        return result;
     }
 }
