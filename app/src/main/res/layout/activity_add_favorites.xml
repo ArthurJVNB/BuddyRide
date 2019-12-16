@@ -5,44 +5,50 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background_simple2"
-    tools:context=".Activities.FavoritesActivity">
+    tools:context=".Activities.AddFavoritesActivity">
 
     <TextView
-        android:id="@+id/favorites_text"
+        android:id="@+id/addFavorites_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/favorites"
+        android:text="New Favorite"
         android:textColor="@color/lightBlue"
         android:textSize="25sp"
+        android:textStyle="normal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.052"
+        app:layout_constraintHorizontal_bias="0.117"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.048" />
+        app:layout_constraintVertical_bias="0.05" />
 
-    <ListView
-        android:id="@+id/listview_favorites"
-        android:layout_width="406dp"
-        android:layout_height="549dp"
+    <EditText
+        android:id="@+id/address_field"
+        android:layout_width="305dp"
+        android:layout_height="65dp"
+        android:backgroundTint="@color/lightGrey"
+        android:ems="10"
+        android:hint="Address"
+        android:inputType="textPostalAddress"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.4"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageView
-        android:id="@+id/button_plus"
-        android:layout_width="57dp"
-        android:layout_height="69dp"
-        android:contentDescription="TODO"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.923"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.989"
-        app:srcCompat="@drawable/plus_button" />
+        app:layout_constraintVertical_bias="0.396" />
+
+    <EditText
+        android:id="@+id/description_field"
+        android:layout_width="305dp"
+        android:layout_height="65dp"
+        android:backgroundTint="@color/lightGrey"
+        android:ems="10"
+        android:hint="Description"
+        android:inputType="text"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.54" />
 
     <ImageView
         android:id="@+id/arrow_back"
@@ -55,4 +61,18 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.976"
         app:srcCompat="@drawable/arrow_left_blue" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.811"
+        app:srcCompat="@drawable/button_confirm" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
