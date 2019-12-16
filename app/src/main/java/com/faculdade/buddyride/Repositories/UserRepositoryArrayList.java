@@ -38,7 +38,7 @@ public class UserRepositoryArrayList implements IRepository<User> {
     @Override
     public void update(User user) {
         for (User currentUser : repository) {
-            if (currentUser.getEmail().equals(user.getEmail())) {
+            if (currentUser.getId().equals(user.getId())) {
                 int index = repository.indexOf(currentUser);
                 repository.set(index, user);
                 break;
@@ -46,13 +46,12 @@ public class UserRepositoryArrayList implements IRepository<User> {
         }
     }
 
-    @NonNull
     @Override
     public User search(String id) {
         User result = null;
 
         for (User currentUser : repository) {
-            if (currentUser.getEmail().equals(id)) {
+            if (currentUser.getId().equals(id)) {
                 result = currentUser;
                 break;
             }
@@ -69,6 +68,6 @@ public class UserRepositoryArrayList implements IRepository<User> {
             result = true;
         }
 
-        return false;
+        return result;
     }
 }

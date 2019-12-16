@@ -10,6 +10,7 @@ public class UserController implements IUserController {
 
     private IRepository<User> mUserRepository;
 
+    // ---------------------- SINGLETON ----------------------
     private UserController() {
         mUserRepository = UserRepositoryArrayList.getInstance();
     }
@@ -18,9 +19,11 @@ public class UserController implements IUserController {
         static final UserController INSTANCE = new UserController();
     }
 
-    public static UserController getInstance() {
+    // Protegido para apenas o pacote ler. Isso garante que apenas o Facade irah chama-lo
+    static UserController getInstance() {
         return Singleton.INSTANCE;
     }
+    // -------------------------------------------------------
 
     @Override
     public void registerUser(User user) throws UserControllerException {

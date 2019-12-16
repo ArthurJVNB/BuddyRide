@@ -8,8 +8,10 @@ public class User {
     private Date birthDate;
     private String email;
     private String password;
+    private String secretQuestion;
+    private String secretQuestionAnswer;
 
-    public User(String name, String lastName, Date birthDate, String email, String password) {
+    public User(String name, String lastName, Date birthDate, String email, String password, String secretQuestion, String secretQuestionAnswer) {
         setName(name);
         setLastName(lastName);
         setBirthDate(birthDate);
@@ -53,7 +55,38 @@ public class User {
         this.password = password;
     }
 
+    private String getSecretQuestion() {
+        return secretQuestion;
+    }
+
+    public void setSecretQuestion(String secretQuestion) {
+        this.secretQuestion = secretQuestion;
+    }
+
+    private String getSecretQuestionAnswer() {
+        return secretQuestionAnswer;
+    }
+
+    public void setSecretQuestionAnswer(String secretQuestionAnswer) {
+        this.secretQuestionAnswer = secretQuestionAnswer;
+    }
+
+    public String getId() {
+        // o email eh o proprio id, mas pra evitar confusao, existe essa forma de pegar o id
+        return email;
+    }
+
     public boolean checkPassword(String password) {
         return this.password.equals(password);
+    }
+
+    public boolean checkSecretQuestion(String secretQuestion, String secretQuestionAnswer) {
+        boolean result = false;
+
+        if (this.secretQuestion.equals(secretQuestion) && this.secretQuestionAnswer.equals(secretQuestionAnswer)) {
+            result = true;
+        }
+
+        return result;
     }
 }
