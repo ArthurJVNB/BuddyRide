@@ -29,7 +29,7 @@ public class UserController implements IUserController {
     public void registerUser(User user) throws UserControllerException {
         if (mUserRepository.exists(user.getEmail())) {
             throw new UserControllerException(UserControllerException.EnumExceptionType.USER_ALREADY_EXISTS);
-        }
+        } //TODO: ELSE!!
     }
 
     @Override
