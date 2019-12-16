@@ -11,7 +11,10 @@ import android.widget.Toast;
 
 import com.faculdade.buddyride.Controllers.Facade;
 import com.faculdade.buddyride.Entities.FavoriteAddress;
+import com.faculdade.buddyride.Entities.LoggedUser;
+import com.faculdade.buddyride.Exceptions.FavoritesControllerException;
 import com.faculdade.buddyride.R;
+import com.google.android.gms.maps.model.LatLng;
 
 public class AddFavoritesActivity extends AppCompatActivity {
 
@@ -42,6 +45,9 @@ public class AddFavoritesActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+                //teste
+                LatLng teste = new LatLng(-8.041191,-34.959247);
+
                 //Catch input data
 
                 String catchDescription = null;
@@ -53,8 +59,17 @@ public class AddFavoritesActivity extends AppCompatActivity {
 
                 }else{
                     //Save data
-                    FavoriteAddress favorite = new FavoriteAddress(catchDescription);
-                    facade.registerFavoriteAddress(favorite);
+                    FavoriteAddress favorite = new FavoriteAddress(teste,catchDescription, LoggedUser.id);
+                    try {
+                        facade.registerFavoriteAddress(favorite);
+                    } catch (FavoritesControllerException e) {
+
+                        switch (e.getMessage()){
+
+                        }
+
+                        e.getMessage();
+                    }
                     startActivity(new Intent(AddFavoritesActivity.this, MainActivity.class));
                 }
 
