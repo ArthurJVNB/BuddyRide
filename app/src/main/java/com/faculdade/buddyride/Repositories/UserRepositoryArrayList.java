@@ -11,6 +11,7 @@ public class UserRepositoryArrayList implements IRepository<User> {
 
     private ArrayList<User> repository;
 
+    // ---------------------- SINGLETON ----------------------
     private UserRepositoryArrayList() {
         repository = new ArrayList<>();
     }
@@ -22,6 +23,7 @@ public class UserRepositoryArrayList implements IRepository<User> {
     public static UserRepositoryArrayList getInstance() {
         return Singleton.INSTANCE;
     }
+    // -------------------------------------------------------
 
     @Override
     public void add(User user) {
