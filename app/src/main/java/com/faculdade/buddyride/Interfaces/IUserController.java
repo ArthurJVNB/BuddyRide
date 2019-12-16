@@ -8,4 +8,5 @@ public interface IUserController {
     void updateUser(User user) throws UserControllerException;
     void removeUser(String email, String password) throws UserControllerException;
     boolean exists(String id);
+    boolean checkPassword(String id, String password) throws UserControllerException;
 }

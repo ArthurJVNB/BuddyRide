@@ -44,6 +44,10 @@ public class Facade {
         mUserController.updateUser(user);
     }
 
+    public boolean checkUserPassword(String userId, String password) throws UserControllerException {
+        return mUserController.checkPassword(userId, password);
+    }
+
     // CONTROLLER: IFavoritesController
     public void registerFavoriteAddress(FavoriteAddress favorite) throws FavoritesControllerException {
         if (mUserController.exists(favorite.getUserId())) {
