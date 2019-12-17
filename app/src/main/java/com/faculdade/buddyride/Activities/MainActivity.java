@@ -2,11 +2,14 @@ package com.faculdade.buddyride.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.Manifest;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.faculdade.buddyride.Entities.LoggedUser;
 import com.faculdade.buddyride.R;
@@ -35,5 +38,21 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        //PERMISSION: Asking permission to access camera and internal storage
+        if(Build.VERSION.SDK_INT >= 23){
+            requestPermissions(new String[]{
+                    Manifest.permission.INTERNET, Manifest.permission.ACCESS_FINE_LOCATION}, 2);
+        } else {
+            showToast("Version less than Marshmallow!!!");
+        }
+
     }
+
+    //TOAST MESSAGE
+    private void showToast(String msg){
+        Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_LONG).show();
+    }
+
+
+
 }

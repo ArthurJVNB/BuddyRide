@@ -46,7 +46,7 @@ public class LoginActivity extends AppCompatActivity {
                     showToast("Empty field. Try again.");
                 }else{
                     //Do login
-                    startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                    startActivity(new Intent(LoginActivity.this, UserChoiceActivity.class));
                 }
 
             }
