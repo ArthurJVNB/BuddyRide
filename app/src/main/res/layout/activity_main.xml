@@ -26,7 +26,8 @@
         app:layout_constraintHorizontal_bias="0.853"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.04" />
+        app:layout_constraintVertical_bias="0.04"
+        android:importantForAutofill="no" />
 
     <ImageView
         android:id="@+id/button_profile"
@@ -50,7 +51,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.376"
-        app:srcCompat="@drawable/button_history" />
+        app:srcCompat="@drawable/button_history"
+        android:contentDescription="TODO" />
 
     <ImageView
         android:id="@+id/button_favorites"
@@ -73,7 +75,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.172"
-        app:srcCompat="@drawable/button_contact_us" />
+        app:srcCompat="@drawable/button_contact_us"
+        android:contentDescription="TODO" />
 
     <ImageView
         android:id="@+id/button_about_us"
@@ -85,7 +88,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.38"
-        app:srcCompat="@drawable/button_about_us" />
+        app:srcCompat="@drawable/button_about_us"
+        android:contentDescription="TODO" />
 
     <ImageView
         android:id="@+id/button_privacy_policy"
@@ -109,7 +113,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.038"
-        app:srcCompat="@drawable/icon_grid" />
+        app:srcCompat="@drawable/icon_grid"
+        android:contentDescription="TODO" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
