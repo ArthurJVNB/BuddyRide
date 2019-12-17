@@ -59,12 +59,13 @@ public class Facade {
         mUserController.updateUser(user);
     }
 
-    public User getUser(String userId) {
-        return mUserController.getUser(userId);
-    }
-
     public boolean checkUserPassword(String userId, String password) throws UserControllerException {
         return mUserController.checkPassword(userId, password);
+    }
+
+    public void changeUserPassword(String userId, String newPassword) {
+        User user = mUserController.getUser(userId);
+        user.setPassword(newPassword);
     }
 
     public void setUserStatus(String userId, User.Status status) {
