@@ -10,5 +10,6 @@ public interface IUserController {
     User getUser(String id);
     boolean exists(String id);
     boolean checkPassword(String id, String password) throws UserControllerException;
+    boolean checkSecretAnswer(String id, String secretQuestion, String secretAnswer) throws UserControllerException;
     void setUserStatus(String id, User.Status status);
 }

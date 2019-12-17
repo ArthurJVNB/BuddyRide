@@ -23,6 +23,8 @@ public class User {
         setEmail(email);
         setPassword(password);
         setStatus(Status.PASSENGER);
+        setSecretQuestion(secretQuestion);
+        setSecretQuestionAnswer(secretQuestionAnswer);
     }
 
     public String getName() {
@@ -98,7 +100,7 @@ public class User {
         return this.password.equals(password);
     }
 
-    public boolean checkSecretQuestion(String secretQuestion, String secretQuestionAnswer) {
+    public boolean checkSecretAnswer(String secretQuestion, String secretQuestionAnswer) {
         boolean result = false;
 
         if (this.secretQuestion.equals(secretQuestion) && this.secretQuestionAnswer.equals(secretQuestionAnswer)) {

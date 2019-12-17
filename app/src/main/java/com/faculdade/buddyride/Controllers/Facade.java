@@ -73,6 +73,10 @@ public class Facade {
         return mUserController.checkPassword(userId, password);
     }
 
+    public boolean checkUserSecretAnswer(String userId, String secretQuestion, String secretAnswer) throws UserControllerException {
+        return mUserController.checkSecretAnswer(userId, secretQuestion, secretAnswer);
+    }
+
     public void changeUserPassword(String userId, String newPassword) {
         User user = mUserController.getUser(userId);
         user.setPassword(newPassword);
