@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.faculdade.buddyride.Controllers.Facade;
+import com.faculdade.buddyride.Entities.LoggedUser;
 import com.faculdade.buddyride.Entities.User;
 import com.faculdade.buddyride.R;
 
@@ -42,8 +43,8 @@ public class RefactorPasswordActivity extends AppCompatActivity {
         mButtonConfirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                User user = facade.getUser(LoggedUser.id);
                 
-
 
                 //Navigating between RefactorPasswordActivity and MainActivity
                 startActivity(new Intent(RefactorPasswordActivity.this, MainActivity.class));
