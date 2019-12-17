@@ -63,6 +63,10 @@ public class Facade {
         return mUserController.checkPassword(userId, password);
     }
 
+    public void setUserStatus(String userId, User.Status status) {
+        mUserController.setUserStatus(userId, status);
+    }
+
     // CONTROLLER: IFavoritesController
     public void registerFavoriteAddress(FavoriteAddress favorite) throws FavoritesControllerException {
         if (mUserController.exists(favorite.getUserId())) {

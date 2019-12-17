@@ -9,4 +9,5 @@ public interface IUserController {
     void removeUser(String email, String password) throws UserControllerException;
     boolean exists(String id);
     boolean checkPassword(String id, String password) throws UserControllerException;
+    void setUserStatus(String id, User.Status status);
 }

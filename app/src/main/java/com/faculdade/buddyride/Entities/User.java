@@ -10,6 +10,12 @@ public class User {
     private String password;
     private String secretQuestion;
     private String secretQuestionAnswer;
+    private Status status;
+
+    public enum Status {
+        DRIVER,
+        PASSENGER
+    }
 
     public User(String name, String lastName, String birthDate, String email, String password, String secretQuestion, String secretQuestionAnswer) {
         setName(name);
@@ -17,6 +23,7 @@ public class User {
         setBirthDate(birthDate);
         setEmail(email);
         setPassword(password);
+        setStatus(Status.PASSENGER);
     }
 
     public String getName() {
@@ -69,6 +76,14 @@ public class User {
 
     public void setSecretQuestionAnswer(String secretQuestionAnswer) {
         this.secretQuestionAnswer = secretQuestionAnswer;
+    }
+
+    public Status getStatus() {
+        return status;
+    }
+
+    public void setStatus(Status status) {
+        this.status = status;
     }
 
     public String getId() {
