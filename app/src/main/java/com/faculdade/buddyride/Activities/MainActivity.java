@@ -8,7 +8,6 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -16,7 +15,6 @@ import com.faculdade.buddyride.ApiKey;
 import com.faculdade.buddyride.Entities.LoggedUser;
 import com.faculdade.buddyride.Helpers.ToastHelper;
 import com.faculdade.buddyride.R;
-import com.faculdade.buddyride.TestActivities.TestActivity;
 import com.google.android.gms.common.api.Status;
 import com.google.android.libraries.places.api.Places;
 import com.google.android.libraries.places.api.model.Place;

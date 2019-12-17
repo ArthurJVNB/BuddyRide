@@ -1,21 +1,15 @@
-package com.faculdade.buddyride.TestActivities;
+package com.faculdade.buddyride.Learning;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
-import android.text.format.DateUtils;
-import android.text.style.TtsSpan;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
-import android.widget.DatePicker;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.faculdade.buddyride.Controllers.Facade;
 import com.faculdade.buddyride.R;
-
-import java.util.Date;
 
 public class TestLogonActivity extends AppCompatActivity {
 

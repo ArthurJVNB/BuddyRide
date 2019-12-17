@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.ListView;
 import android.widget.TextView;
 
 import com.faculdade.buddyride.Controllers.Facade;
@@ -15,15 +14,8 @@ import com.faculdade.buddyride.Entities.User;
 import com.faculdade.buddyride.Exceptions.UserControllerException;
 import com.faculdade.buddyride.Helpers.ToastHelper;
 import com.faculdade.buddyride.R;
-import com.faculdade.buddyride.TestActivities.Adapter;
-import com.faculdade.buddyride.TestActivities.ItemsListView;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class SignUpActivity extends AppCompatActivity {
-
-    List<ItemsListView> listItems;
 
     private TextView mFirstName;
     private TextView mLastname;
@@ -51,13 +43,6 @@ public class SignUpActivity extends AppCompatActivity {
         mSecretAnswer = findViewById(R.id.secretAnswer_field);
         mConfirmButton = findViewById((R.id.button_confirm));
         mArrowBack = findViewById(R.id.button_arrowBack);
-
-        createData();
-
-        ListView listView = (ListView)this.findViewById(R.id.listview);
-
-        Adapter adapter = new Adapter(this, R.layout.signup_listview, listItems);
-        listView.setAdapter(adapter);
 
 
         //Navigating between SignUpActivity and MainActivity
@@ -104,12 +89,5 @@ public class SignUpActivity extends AppCompatActivity {
                 finish();
             }
         });
-    }
-
-    public void createData(){
-        listItems = new ArrayList<ItemsListView>();
-
-        listItems.add(new ItemsListView(mFirstName, mLastname, mDateOfBirth, mEmail, mPassword, mConfirmPassword, mSecretQuestion, mSecretAnswer));
-
     }
 }

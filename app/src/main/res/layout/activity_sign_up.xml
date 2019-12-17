@@ -8,6 +8,107 @@
     tools:context=".Activities.SignUpActivity">
 
 
+    <ScrollView
+        android:layout_width="392dp"
+        android:layout_height="475dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.497">
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/name_field"
+                android:layout_width="330dp"
+                android:layout_height="55dp"
+                android:backgroundTint="@color/lightGrey"
+                android:textSize="15dp"
+                android:ems="10"
+                android:hint="First Name"
+                android:inputType="text" />
+
+            <EditText
+                android:id="@+id/lastname_field"
+                android:layout_width="330dp"
+                android:layout_height="55dp"
+                android:backgroundTint="@color/lightGrey"
+                android:textSize="15dp"
+                android:ems="10"
+                android:hint="Lastname"
+                android:inputType="text" />
+
+            <EditText
+                android:id="@+id/birthday_field"
+                android:layout_width="330dp"
+                android:layout_height="55dp"
+                android:backgroundTint="@color/lightGrey"
+                android:textSize="15dp"
+                android:ems="10"
+                android:hint="Date of birth"
+                android:inputType="text" />
+
+            <EditText
+                android:id="@+id/email_field"
+                android:layout_width="330dp"
+                android:layout_height="55dp"
+                android:backgroundTint="@color/lightGrey"
+                android:textSize="15dp"
+                android:ems="10"
+                android:hint="Email"
+                android:inputType="textEmailAddress" />
+
+            <EditText
+                android:id="@+id/password_field"
+                android:layout_width="330dp"
+                android:layout_height="55dp"
+                android:backgroundTint="@color/lightGrey"
+                android:textSize="15dp"
+                android:ems="10"
+                android:hint="Password"
+                android:inputType="textPassword" />
+
+            <EditText
+                android:id="@+id/confirmPassword_field"
+                android:layout_width="330dp"
+                android:layout_height="55dp"
+                android:backgroundTint="@color/lightGrey"
+                android:textSize="15dp"
+                android:ems="10"
+                android:hint="Confirm Password"
+                android:inputType="text" />
+
+            <EditText
+                android:id="@+id/secretQuestion_field"
+                android:layout_width="330dp"
+                android:layout_height="55dp"
+                android:backgroundTint="@color/lightGrey"
+                android:textSize="15dp"
+                android:ems="10"
+                android:hint="Secret Question"
+                android:inputType="text" />
+
+            <EditText
+                android:id="@+id/secretAnswer_field"
+                android:layout_width="330dp"
+                android:layout_height="55dp"
+                android:backgroundTint="@color/lightGrey"
+                android:textSize="15dp"
+                android:ems="10"
+                android:hint="Answer"
+                android:inputType="text" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
     <ImageView
         android:id="@+id/button_confirm"
         android:layout_width="250dp"
@@ -31,14 +132,5 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.98"
         app:srcCompat="@drawable/arrow_left_blue" />
-
-    <ListView
-        android:id="@+id/listview"
-        android:layout_width="392dp"
-        android:layout_height="475dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

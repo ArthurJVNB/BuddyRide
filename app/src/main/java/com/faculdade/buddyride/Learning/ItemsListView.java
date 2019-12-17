@@ -1,4 +1,4 @@
-package com.faculdade.buddyride.TestActivities;
+package com.faculdade.buddyride.Learning;
 
 import android.widget.TextView;
 
