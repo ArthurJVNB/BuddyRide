@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -27,7 +28,14 @@ import java.util.Arrays;
 public class MainActivity extends AppCompatActivity {
 
 
-    private ImageView grid;
+
+    private ImageView mGrid;
+    private ImageView mProfile_button;
+    private ImageView mContactUs_button;
+    private ImageView mPrivacyPolicy_button;
+    private ImageView mAboutUs_button;
+    private ImageView mFavorites_button;
+    private ImageView mHistory_button;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,26 +46,76 @@ public class MainActivity extends AppCompatActivity {
             startActivity(new Intent(MainActivity.this, LoginActivity.class));
         }
 
+        mGrid = findViewById(R.id.grid_icon);
+        mProfile_button = findViewById(R.id.button_profile);
+        mContactUs_button = findViewById(R.id.button_contact_us);
+        mPrivacyPolicy_button = findViewById(R.id.button_privacy_policy);
+        mAboutUs_button = findViewById(R.id.button_about_us);
+        mFavorites_button = findViewById(R.id.button_favorites);
+        mHistory_button = findViewById(R.id.button_history);
 
 
-        grid = findViewById(R.id.grid_icon);
-
-        grid.setOnClickListener(new View.OnClickListener() {
+        mGrid.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, MainOptionsActivity.class));
+                startActivity(new Intent(MainActivity.this, NotAvailableActivity.class));
             }
         });
 
-        //PERMISSION: Asking permission to access camera and internal storage
+        //PERMISSION: Asking permission to access INTERNET AND LOCATION
         if(Build.VERSION.SDK_INT >= 23){
             requestPermissions(new String[]{
                     Manifest.permission.INTERNET, Manifest.permission.ACCESS_FINE_LOCATION}, 1);
         } else {
-            showToast("Version less than Marshmallow!!!");
+            //just checking
+            ToastHelper.showToast(getApplicationContext(), "Version less than Marshmallow!!");
         }
 
-        // -------------------------- PLACES API --------------------------
+        mFavorites_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, FavoritesActivity.class));
+            }
+        });
+
+        mContactUs_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, NotAvailableActivity.class));
+            }
+        });
+
+        mPrivacyPolicy_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, NotAvailableActivity.class));
+            }
+        });
+
+        mProfile_button.setOnClickListener((new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, NotAvailableActivity.class));
+            }
+        }));
+
+        mAboutUs_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, NotAvailableActivity.class));
+            }
+        });
+
+        mHistory_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, NotAvailableActivity.class));
+            }
+        });
+
+
+
+   /*     // -------------------------- PLACES API --------------------------
         // Initializing Places API
         Places.initialize(getApplicationContext(), ApiKey.getApiKey());
         PlacesClient placesClient = Places.createClient(this);
@@ -80,14 +138,7 @@ public class MainActivity extends AppCompatActivity {
             public void onError(@NonNull Status status) {
                 // TODO deveria tratar o erro, mas nao faco ideia do que colocar aqui
             }
-        });
+        });*/
     }
-
-    //TOAST MESSAGE
-    private void showToast(String msg){
-        Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_LONG).show();
-    }
-
-
 
 }
