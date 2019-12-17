@@ -7,6 +7,8 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.faculdade.buddyride.Helpers.ToastHelper;
 import com.faculdade.buddyride.R;
 
 
@@ -43,7 +45,7 @@ public class LoginActivity extends AppCompatActivity {
 
                //If some of the fields are empty, it'll show a toast message
                 if(catchEmail.isEmpty() || catchPassword.isEmpty()){
-                    showToast("Empty field. Try again.");
+                    ToastHelper.showToast(getApplicationContext(), getString(R.string.empty_field));
                 }else{
                     //Do login
                     startActivity(new Intent(LoginActivity.this, UserChoiceActivity.class));
@@ -70,14 +72,6 @@ public class LoginActivity extends AppCompatActivity {
         });
 
     }//closing onCreate
-
-
-
-    private void showToast(String msg){
-        Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_LONG).show();
-    }
-
-
 }; //closing class
 
 
