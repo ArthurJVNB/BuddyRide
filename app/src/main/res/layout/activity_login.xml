@@ -46,7 +46,7 @@
         android:layout_marginBottom="232dp"
         android:fontFamily="@font/calibre_regular"
         android:text="@string/forgot_password"
-        android:textColor="@color/grey"
+        android:textColor="@color/lightGrey"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
