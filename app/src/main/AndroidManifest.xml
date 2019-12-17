@@ -12,7 +12,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Activities.MainOptionsActivity"></activity>
+        <activity android:name=".Learning.MainOptionsActivity"></activity>
         <activity android:name=".Activities.NotAvailableActivity" />
         <activity android:name=".Activities.AddFavoritesActivity" />
         <activity android:name=".Activities.SecretQuestionActivity" />

@@ -1,4 +1,4 @@
-package com.faculdade.buddyride.Activities;
+package com.faculdade.buddyride.Learning;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 
+import com.faculdade.buddyride.Activities.FavoritesActivity;
+import com.faculdade.buddyride.Activities.NotAvailableActivity;
 import com.faculdade.buddyride.R;
 
 public class MainOptionsActivity extends AppCompatActivity {

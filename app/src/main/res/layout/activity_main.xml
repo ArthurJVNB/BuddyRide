@@ -10,7 +10,7 @@
     <EditText
         android:id="@+id/search_field"
         style="@style/Widget.AppCompat.AutoCompleteTextView"
-        android:layout_width="302dp"
+        android:layout_width="276dp"
         android:layout_height="36dp"
         android:background="@drawable/search_field"
         android:drawableStart="@drawable/icon_magnifying_glass"
@@ -18,47 +18,103 @@
         android:ems="10"
         android:fontFamily="@font/calibre_regular"
         android:hint="@string/Search"
-        android:inputType="textPersonName"
-        android:paddingLeft="20dip"
         android:paddingTop="5dip"
-        android:paddingRight="26dip"
         android:textAlignment="textStart"
         android:textColorHint="@color/lightGrey"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.743"
+        app:layout_constraintHorizontal_bias="0.853"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.037" />
+        app:layout_constraintVertical_bias="0.04"
+        android:importantForAutofill="no" />
+
+    <ImageView
+        android:id="@+id/button_profile"
+        android:layout_width="110dp"
+        android:layout_height="110dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/button_history"
+        app:layout_constraintHorizontal_bias="0.487"
+        app:layout_constraintStart_toEndOf="@+id/button_about_us"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.376"
+        app:srcCompat="@drawable/button_profile" />
+
+    <ImageView
+        android:id="@+id/button_history"
+        android:layout_width="110dp"
+        android:layout_height="110dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.93"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.376"
+        app:srcCompat="@drawable/button_history"
+        android:contentDescription="TODO" />
+
+    <ImageView
+        android:id="@+id/button_favorites"
+        android:layout_width="110dp"
+        android:layout_height="110dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/button_privacy_policy"
+        app:layout_constraintStart_toEndOf="@+id/button_contact_us"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.172"
+        app:srcCompat="@drawable/button_favorites" />
+
+    <ImageView
+        android:id="@+id/button_contact_us"
+        android:layout_width="110dp"
+        android:layout_height="110dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.07"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.172"
+        app:srcCompat="@drawable/button_contact_us"
+        android:contentDescription="TODO" />
+
+    <ImageView
+        android:id="@+id/button_about_us"
+        android:layout_width="108dp"
+        android:layout_height="108dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.07"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.38"
+        app:srcCompat="@drawable/button_about_us"
+        android:contentDescription="TODO" />
+
+    <ImageView
+        android:id="@+id/button_privacy_policy"
+        android:layout_width="110dp"
+        android:layout_height="110dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.93"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.172"
+        app:srcCompat="@drawable/button_privacy_policy" />
 
     <ImageView
         android:id="@+id/grid_icon"
-        android:layout_width="39dp"
-        android:layout_height="35dp"
+        android:layout_width="34dp"
+        android:layout_height="36dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.075"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.038"
-        app:srcCompat="@drawable/icon_grid" />
+        app:srcCompat="@drawable/icon_grid"
+        android:contentDescription="TODO" />
 
-    <LinearLayout
-        android:layout_width="303dp"
-        android:layout_height="184dp"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/search_field"
-        app:layout_constraintHorizontal_bias="0.823"
-        app:layout_constraintStart_toStartOf="@+id/search_field"
-        app:layout_constraintTop_toBottomOf="@+id/search_field"
-        app:layout_constraintVertical_bias="0.0">
-
-        <fragment
-            android:id="@+id/autocomplete_fragment"
-            android:name="com.google.android.libraries.places.widget.AutocompleteSupportFragment"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

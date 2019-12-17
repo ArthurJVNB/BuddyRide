@@ -49,40 +49,5 @@ public class FavoritesActivity extends AppCompatActivity {
                 finish();
             }
         });
-
-        /*//Creating instance of a class MyAdapter
-        FavoritesActivity.MyAdapter adapter = new MyAdapter(this, titles, imgs, sources);
-
-        //set Adapter to list
-        listview.setAdapter(adapter);*/
     }
-
-  /*  class MyAdapter extends ArrayAdapter<String> {
-        Context context;
-        String myTitles[];
-        String mySources[];
-        int [] imgs;
-
-        MyAdapter(Context c, String[] titles, int[] imgs, String [] sources){
-            super(c, R.layout.row_listview, R.id.text_title, titles);
-            this.context = c;
-            this.imgs = imgs;
-            this.myTitles = titles;
-            this.mySources = sources;
-        }
-
-        public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent){
-
-            LayoutInflater layoutInflater = (LayoutInflater)getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            View row_listView = layoutInflater.inflate(R.layout.row_listview, parent, false);
-            ImageView images = row_listView.findViewById(R.id.photo_album);
-            TextView myTitle = row_listView.findViewById(R.id.text_title);
-            TextView mySources = row_listView.findViewById(R.id.text_source);
-            images.setImageResource(imgs[position]);
-            myTitle.setText(titles[position]);
-            mySources.setText(sources[position]);
-
-            return row_listView;
-        }
-    }*/
 }
