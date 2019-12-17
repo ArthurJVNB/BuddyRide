@@ -32,6 +32,9 @@ public class RefactorPasswordActivity extends AppCompatActivity {
         mButtonConfirm = findViewById(R.id.button_Confirm);
         mArrowBack = findViewById(R.id.button_arrowBack);
 
+        final String catchPassword = mPassword.getText().toString();
+        String catchConfirmPassword = mConfirmPassword.getText().toString();
+
         //Going back to the LoginActivity
         mArrowBack.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -43,8 +46,7 @@ public class RefactorPasswordActivity extends AppCompatActivity {
         mButtonConfirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                User user = facade.getUser(LoggedUser.id);
-                
+                facade.changeUserPassword(LoggedUser.id, catchPassword);
 
                 //Navigating between RefactorPasswordActivity and MainActivity
                 startActivity(new Intent(RefactorPasswordActivity.this, MainActivity.class));

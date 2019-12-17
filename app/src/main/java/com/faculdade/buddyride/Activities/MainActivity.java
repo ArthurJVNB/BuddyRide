@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
         //PERMISSION: Asking permission to access camera and internal storage
         if(Build.VERSION.SDK_INT >= 23){
             requestPermissions(new String[]{
-                    Manifest.permission.INTERNET, Manifest.permission.ACCESS_FINE_LOCATION}, 2);
+                    Manifest.permission.INTERNET, Manifest.permission.ACCESS_FINE_LOCATION}, 1);
         } else {
             showToast("Version less than Marshmallow!!!");
         }
