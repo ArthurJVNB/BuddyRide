@@ -16,12 +16,11 @@ public class UserChoiceActivity extends AppCompatActivity {
 
     private Button mDriver;
     private Button mPassenger;
-    private Facade facade;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_user_choice);
 
         //TODO:Logic of User driver and user passenger
 
@@ -31,6 +30,7 @@ public class UserChoiceActivity extends AppCompatActivity {
         mDriver.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Facade facade = Facade.getInstance();
                 facade.setUserStatus(LoggedUser.id, User.Status.DRIVER);
                 startActivity(new Intent(UserChoiceActivity.this, MainActivity.class));
 
@@ -40,6 +40,7 @@ public class UserChoiceActivity extends AppCompatActivity {
         mPassenger.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Facade facade = Facade.getInstance();
                 facade.setUserStatus(LoggedUser.id, User.Status.PASSENGER);
                 startActivity(new Intent(UserChoiceActivity.this, MainActivity.class));
             }

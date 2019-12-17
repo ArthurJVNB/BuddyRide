@@ -1,6 +1,7 @@
 package com.faculdade.buddyride.Controllers;
 
 import com.faculdade.buddyride.Entities.FavoriteAddress;
+import com.faculdade.buddyride.Entities.LoggedUser;
 import com.faculdade.buddyride.Entities.User;
 import com.faculdade.buddyride.Exceptions.FavoritesControllerException;
 import com.faculdade.buddyride.Exceptions.UserControllerException;
@@ -34,6 +35,15 @@ public class Facade {
     // CONTROLLER: IUserController
     public void registerUser(User user) throws UserControllerException {
         mUserController.registerUser(user);
+    }
+
+    public void loginUser(String id, String password) throws UserControllerException {
+        checkUserPassword(id, password);
+        LoggedUser.id = id;
+    }
+
+    public void logoutUser() {
+        LoggedUser.id = null;
     }
 
     public void removeUser(String id, String password) throws UserControllerException {

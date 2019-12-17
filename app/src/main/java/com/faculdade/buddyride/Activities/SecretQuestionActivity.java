@@ -27,7 +27,7 @@ public class SecretQuestionActivity extends AppCompatActivity {
 
         mSecretQuestion = findViewById(R.id.secretQuestionText);
         mSecretAnswer = findViewById(R.id.secretAnswer_field);
-        mButtonConfirm = findViewById(R.id.button_Confirm);
+        mButtonConfirm = findViewById(R.id.button_confirm);
         mArrowBack = findViewById(R.id.button_arrowBack);
 
         String catchSecretAnswer = mSecretAnswer.getText().toString();

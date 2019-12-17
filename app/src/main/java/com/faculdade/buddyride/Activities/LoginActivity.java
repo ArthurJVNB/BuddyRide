@@ -22,7 +22,6 @@ public class LoginActivity extends AppCompatActivity {
     private TextView mForgotPassword;
     private TextView mSignUp;
     private ImageView mSingIn;
-    private Facade facade;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,23 +43,22 @@ public class LoginActivity extends AppCompatActivity {
                 String catchEmail = mEmail.getText().toString();
                 String catchPassword = mPassword.getText().toString();
 
+                //TODO: Se usuário não existe no ArrayList exibir um Toast!
+                //TODO: Se senha estiver errada exibir um Toast!
 
-               /* try {
-                    if(facade.checkUserPassword(LoggedUser.id, catchPassword) == false){
-                        ToastHelper.showToast(getApplicationContext(),"Invalid Password");
-
-                    }else if(catchEmail.isEmpty() || catchPassword.isEmpty()){
-                            ToastHelper.showToast(getApplicationContext(), getString(R.string.empty_field));
-
-                    }else{
-                            //Do login
-                            startActivity(new Intent(LoginActivity.this, UserChoiceActivity.class));
-                        }
-                } catch (UserControllerException e) {
-                    String message = e.getMessage();
-                }*/
-
-
+               //If some of the fields are empty, it'll show a toast message
+                if(catchEmail.isEmpty() || catchPassword.isEmpty()){
+                    ToastHelper.showToast(getApplicationContext(), getString(R.string.empty_field));
+                }else{
+                    //Do login
+                    Facade facade = Facade.getInstance();
+                    try {
+                        facade.loginUser(catchEmail, catchPassword);
+                        startActivity(new Intent(LoginActivity.this, UserChoiceActivity.class));
+                    } catch (UserControllerException e) {
+                        ToastHelper.showToast(getApplicationContext(), getString(R.string.user_not_registered_or_wrong_password));
+                    }
+                }
             }
         });
 
@@ -80,9 +78,8 @@ public class LoginActivity extends AppCompatActivity {
                 startActivity(new Intent(LoginActivity.this, SecretQuestionActivity.class));
             }
         });
-
     }//closing onCreate
-}; //closing class
+} //closing class
 
 
 
