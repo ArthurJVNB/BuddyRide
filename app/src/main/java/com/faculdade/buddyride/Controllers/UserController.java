@@ -75,4 +75,10 @@ class UserController implements IUserController {
 
         return result;
     }
+
+    @Override
+    public void setUserStatus(String id, User.Status status) {
+        User user = mRepository.search(id);
+        user.setStatus(status);
+    }
 }
