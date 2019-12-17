@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 
 import com.faculdade.buddyride.Entities.LoggedUser;
 import com.faculdade.buddyride.R;
@@ -14,7 +15,7 @@ import com.faculdade.buddyride.TestActivities.TestActivity;
 public class MainActivity extends AppCompatActivity {
 
 
-    private Button buttonTeste;
+    private ImageView grid;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,12 +26,12 @@ public class MainActivity extends AppCompatActivity {
             startActivity(new Intent(MainActivity.this, LoginActivity.class));
         }
 
-        buttonTeste = findViewById(R.id.buttonTeste);
+        grid = findViewById(R.id.grid_icon);
 
-        buttonTeste.setOnClickListener(new View.OnClickListener() {
+        grid.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, TestActivity.class));
+                startActivity(new Intent(MainActivity.this, MainOptionsActivity.class));
             }
         });
 
