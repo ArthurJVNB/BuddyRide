@@ -13,6 +13,7 @@ import com.faculdade.buddyride.Controllers.Facade;
 import com.faculdade.buddyride.Entities.User;
 import com.faculdade.buddyride.Exceptions.FavoritesControllerException;
 import com.faculdade.buddyride.Exceptions.UserControllerException;
+import com.faculdade.buddyride.Helpers.ToastHelper;
 import com.faculdade.buddyride.R;
 
 import java.util.Date;
@@ -66,10 +67,10 @@ public class SignUpActivity extends AppCompatActivity {
                         || catchEmail.isEmpty() || catchPassword.isEmpty() || catchConfirmPassword.isEmpty()
                         || catchSecretQuestion.isEmpty() || catchSecretAnswer.isEmpty()){
 
-                    showToast("Empty field. Try again.");
+                    ToastHelper.showToast(getApplicationContext(), getString(R.string.empty_field));
 
                 } else if (!catchPassword.equals(catchConfirmPassword)){
-                    showToast("Invalid field. Try again.");
+                    ToastHelper.showToast(getApplicationContext(), getString(R.string.invalid_field));
 
                 } else {
                     User user = new User(catchFirstName, catchLastname, catchDateOfBirth, catchEmail, catchPassword, catchSecretQuestion, catchSecretAnswer);
@@ -81,7 +82,7 @@ public class SignUpActivity extends AppCompatActivity {
                         String message = e.getMessage();
 
                         if((message.equals(FavoritesControllerException.EnumExceptionType.INVALID_USER.toString()))){
-                            showToast("Something goes wrong... Try again.");
+                            ToastHelper.showToast(getApplicationContext(), getString(R.string.something_went_wrong));
                         }
                     }
 
@@ -99,11 +100,5 @@ public class SignUpActivity extends AppCompatActivity {
                 finish();
             }
         });
-
-    }
-
-    //TOAST MESSAGE
-    private void showToast(String msg){
-        Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_LONG).show();
     }
 }

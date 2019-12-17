@@ -8,4 +8,7 @@
     <string name="forgot_password">Forgot password</string>
     <string name="favorites">Favorites</string>
     <string name="Search">search</string>
+    <string name="invalid_field">Invalid field. Try again.</string>
+    <string name="empty_field">Empty field. Try again.</string>
+    <string name="something_went_wrong">Something went wrong... Try again.</string>
 </resources>

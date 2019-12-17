@@ -13,6 +13,7 @@ import com.faculdade.buddyride.Controllers.Facade;
 import com.faculdade.buddyride.Entities.FavoriteAddress;
 import com.faculdade.buddyride.Entities.LoggedUser;
 import com.faculdade.buddyride.Exceptions.FavoritesControllerException;
+import com.faculdade.buddyride.Helpers.ToastHelper;
 import com.faculdade.buddyride.R;
 import com.google.android.gms.maps.model.LatLng;
 
@@ -53,7 +54,7 @@ public class AddFavoritesActivity extends AppCompatActivity {
                 String catchAddress = mAddress.getText().toString();
 
                 if(catchAddress.isEmpty()){
-                    showToast("Invalid field. Try again.");
+                    ToastHelper.showToast(getApplicationContext(), getString(R.string.invalid_field));
 
                 }else{
                     //Save data
@@ -75,10 +76,5 @@ public class AddFavoritesActivity extends AppCompatActivity {
 
             }
         });
-    }
-
-    //TOAST MESSAGE
-    private void showToast(String msg){
-        Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_LONG).show();
     }
 }
