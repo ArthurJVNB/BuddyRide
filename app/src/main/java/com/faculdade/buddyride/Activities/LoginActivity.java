@@ -48,7 +48,7 @@ public class LoginActivity extends AppCompatActivity {
                     ToastHelper.showToast(getApplicationContext(), getString(R.string.empty_field));
                 }else{
                     //Do login
-                    startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                    startActivity(new Intent(LoginActivity.this, UserChoiceActivity.class));
                 }
 
             }
