@@ -8,6 +8,8 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.faculdade.buddyride.Controllers.Facade;
+import com.faculdade.buddyride.Entities.User;
 import com.faculdade.buddyride.R;
 
 public class RefactorPasswordActivity extends AppCompatActivity {
@@ -16,6 +18,7 @@ public class RefactorPasswordActivity extends AppCompatActivity {
     private TextView mConfirmPassword;
     private ImageView mButtonConfirm;
     private ImageView mArrowBack;
+    private Facade facade;
 
 
     @Override
@@ -39,7 +42,7 @@ public class RefactorPasswordActivity extends AppCompatActivity {
         mButtonConfirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //TODO: Logic of Update password
+                
 
 
                 //Navigating between RefactorPasswordActivity and MainActivity
