@@ -63,6 +63,11 @@ class UserController implements IUserController {
     }
 
     @Override
+    public User getUser(String id) {
+        return mRepository.search(id);
+    }
+
+    @Override
     public boolean checkPassword(String id, String password) throws UserControllerException {
         boolean result;
 

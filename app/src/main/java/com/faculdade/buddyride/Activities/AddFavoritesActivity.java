@@ -30,6 +30,9 @@ public class AddFavoritesActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_favorites);
 
+        // Initializing Places API Client
+        
+
         mArrowBack = findViewById(R.id.arrow_back);
         mConfirmButton = findViewById(R.id.button_confirm);
         mDescription = findViewById(R.id.description_field);
