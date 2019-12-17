@@ -15,6 +15,7 @@ public class User {
         PASSENGER
     }
 
+
     public User(String name, String lastName, String birthDate, String email, String password, String secretQuestion, String secretQuestionAnswer) {
         setName(name);
         setLastName(lastName);
@@ -60,7 +61,11 @@ public class User {
         this.password = password;
     }
 
-    private String getSecretQuestion() {
+    public String getPassword() {
+        return password;
+    }
+
+    public String getSecretQuestion() {
         return secretQuestion;
     }
 
@@ -68,7 +73,7 @@ public class User {
         this.secretQuestion = secretQuestion;
     }
 
-    private String getSecretQuestionAnswer() {
+    public String getSecretQuestionAnswer() {
         return secretQuestionAnswer;
     }
 
