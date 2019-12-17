@@ -49,9 +49,7 @@ public class AddFavoritesActivity extends AppCompatActivity {
                 LatLng teste = new LatLng(-8.041191,-34.959247);
 
                 //Catch input data
-
-                String catchDescription = null;
-                catchDescription = mDescription.getText().toString();
+                String catchDescription = mDescription.getText().toString();
                 String catchAddress = mAddress.getText().toString();
 
                 if(catchAddress.isEmpty()){
@@ -60,6 +58,7 @@ public class AddFavoritesActivity extends AppCompatActivity {
                 }else{
                     //Save data
                     FavoriteAddress favorite = new FavoriteAddress(teste,catchDescription, LoggedUser.id);
+
                     try {
                         facade.registerFavoriteAddress(favorite);
                     } catch (FavoritesControllerException e) {
