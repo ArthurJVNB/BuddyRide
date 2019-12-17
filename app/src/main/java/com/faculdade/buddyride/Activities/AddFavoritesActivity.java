@@ -69,9 +69,7 @@ public class AddFavoritesActivity extends AppCompatActivity {
 
                         String message = e.getMessage();
                         if (message.equals(FavoritesControllerException.EnumExceptionType.INVALID_USER.toString())) {
-                            // TODO avisar que houve algum problema com usuario (talvez pedir pra fazer login de novo)
-                        } else {
-                            // TODO avisar que algo muito estranho aconteceu
+                            ToastHelper.showToast(getApplicationContext(),"Something went wrong... Try to Sign in again.");
                         }
                     }
                     startActivity(new Intent(AddFavoritesActivity.this, MainActivity.class));

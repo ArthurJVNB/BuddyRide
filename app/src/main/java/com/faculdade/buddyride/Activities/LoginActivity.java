@@ -8,6 +8,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.faculdade.buddyride.Controllers.Facade;
+import com.faculdade.buddyride.Entities.LoggedUser;
+import com.faculdade.buddyride.Exceptions.UserControllerException;
 import com.faculdade.buddyride.Helpers.ToastHelper;
 import com.faculdade.buddyride.R;
 
@@ -19,6 +22,7 @@ public class LoginActivity extends AppCompatActivity {
     private TextView mForgotPassword;
     private TextView mSignUp;
     private ImageView mSingIn;
+    private Facade facade;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,16 +44,22 @@ public class LoginActivity extends AppCompatActivity {
                 String catchEmail = mEmail.getText().toString();
                 String catchPassword = mPassword.getText().toString();
 
-                //TODO: Se usuário não existe no ArrayList exibir um Toast!
-                //TODO: Se senha estiver errada exibir um Toast!
 
-               //If some of the fields are empty, it'll show a toast message
-                if(catchEmail.isEmpty() || catchPassword.isEmpty()){
-                    ToastHelper.showToast(getApplicationContext(), getString(R.string.empty_field));
-                }else{
-                    //Do login
-                    startActivity(new Intent(LoginActivity.this, UserChoiceActivity.class));
-                }
+               /* try {
+                    if(facade.checkUserPassword(LoggedUser.id, catchPassword) == false){
+                        ToastHelper.showToast(getApplicationContext(),"Invalid Password");
+
+                    }else if(catchEmail.isEmpty() || catchPassword.isEmpty()){
+                            ToastHelper.showToast(getApplicationContext(), getString(R.string.empty_field));
+
+                    }else{
+                            //Do login
+                            startActivity(new Intent(LoginActivity.this, UserChoiceActivity.class));
+                        }
+                } catch (UserControllerException e) {
+                    String message = e.getMessage();
+                }*/
+
 
             }
         });

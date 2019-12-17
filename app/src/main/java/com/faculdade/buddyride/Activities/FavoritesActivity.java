@@ -25,7 +25,6 @@ public class FavoritesActivity extends AppCompatActivity {
     private ImageView mArrowBack;
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

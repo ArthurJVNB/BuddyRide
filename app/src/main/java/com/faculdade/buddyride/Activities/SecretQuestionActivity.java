@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.faculdade.buddyride.Controllers.Facade;
 import com.faculdade.buddyride.R;
 
 public class SecretQuestionActivity extends AppCompatActivity {
@@ -16,6 +17,7 @@ public class SecretQuestionActivity extends AppCompatActivity {
     private TextView mSecretAnswer;
     private ImageView mButtonConfirm;
     private ImageView mArrowBack;
+    private Facade facade;
 
 
     @Override
@@ -27,6 +29,8 @@ public class SecretQuestionActivity extends AppCompatActivity {
         mSecretAnswer = findViewById(R.id.secretAnswer_field);
         mButtonConfirm = findViewById(R.id.button_Confirm);
         mArrowBack = findViewById(R.id.button_arrowBack);
+
+        String catchSecretAnswer = mSecretAnswer.getText().toString();
 
         //Going back to the previous Activity
         mArrowBack.setOnClickListener(new View.OnClickListener() {
