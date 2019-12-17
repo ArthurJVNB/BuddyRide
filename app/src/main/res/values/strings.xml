@@ -11,4 +11,5 @@
     <string name="invalid_field">Invalid field. Try again.</string>
     <string name="empty_field">Empty field. Try again.</string>
     <string name="something_went_wrong">Something went wrong... Try again.</string>
+    <string name="user_not_registered_or_wrong_password">User not registered or wrong password</string>
 </resources>

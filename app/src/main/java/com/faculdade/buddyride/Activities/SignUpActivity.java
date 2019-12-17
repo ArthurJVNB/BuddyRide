@@ -7,16 +7,13 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.faculdade.buddyride.Controllers.Facade;
+import com.faculdade.buddyride.Entities.LoggedUser;
 import com.faculdade.buddyride.Entities.User;
-import com.faculdade.buddyride.Exceptions.FavoritesControllerException;
 import com.faculdade.buddyride.Exceptions.UserControllerException;
 import com.faculdade.buddyride.Helpers.ToastHelper;
 import com.faculdade.buddyride.R;
-
-import java.util.Date;
 
 public class SignUpActivity extends AppCompatActivity {
 
@@ -30,7 +27,6 @@ public class SignUpActivity extends AppCompatActivity {
     private TextView mSecretAnswer;
     private ImageView mConfirmButton;
     private ImageView mArrowBack;
-    private Facade facade;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,7 +41,7 @@ public class SignUpActivity extends AppCompatActivity {
         mConfirmPassword = findViewById(R.id.confirmPassword_field);
         mSecretQuestion = findViewById(R.id.secretQuestion_field);
         mSecretAnswer = findViewById(R.id.secretAnswer_field);
-        mConfirmButton = findViewById((R.id.button_Confirm));
+        mConfirmButton = findViewById((R.id.button_confirm));
         mArrowBack = findViewById(R.id.button_arrowBack);
 
 
@@ -53,7 +49,6 @@ public class SignUpActivity extends AppCompatActivity {
         mConfirmButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 String catchFirstName = mFirstName.getText().toString();
                 String catchLastname = mLastname.getText().toString();
                 String catchDateOfBirth = mDateOfBirth.getText().toString();
@@ -75,20 +70,15 @@ public class SignUpActivity extends AppCompatActivity {
                 } else {
                     User user = new User(catchFirstName, catchLastname, catchDateOfBirth, catchEmail, catchPassword, catchSecretQuestion, catchSecretAnswer);
 
+                    Facade facade = Facade.getInstance();
                     try {
                         facade.registerUser(user);
-
+                        facade.loginUser(catchEmail, catchPassword);
+                        startActivity(new Intent(getApplicationContext(), UserChoiceActivity.class));
                     } catch (UserControllerException e) {
-                        String message = e.getMessage();
-
-                        if((message.equals(FavoritesControllerException.EnumExceptionType.INVALID_USER.toString()))){
-                            ToastHelper.showToast(getApplicationContext(), getString(R.string.something_went_wrong));
-                        }
+                        ToastHelper.showToast(getApplicationContext(), "User already exists");
                     }
-
-                    startActivity(new Intent(SignUpActivity.this, UserChoiceActivity.class));
                 }
-
             }
         });
 

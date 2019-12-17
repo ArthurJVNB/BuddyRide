@@ -31,12 +31,13 @@ public class AddFavoritesActivity extends AppCompatActivity {
         setContentView(R.layout.activity_add_favorites);
 
         // Initializing Places API Client
-        
+        // TODO
 
         mArrowBack = findViewById(R.id.arrow_back);
         mConfirmButton = findViewById(R.id.button_confirm);
         mDescription = findViewById(R.id.description_field);
         mAddress = findViewById(R.id.address_field);
+        facade = Facade.getInstance();
 
         mArrowBack.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -66,13 +67,7 @@ public class AddFavoritesActivity extends AppCompatActivity {
                     try {
                         facade.registerFavoriteAddress(favorite);
                     } catch (FavoritesControllerException e) {
-
-                        String message = e.getMessage();
-                        if (message.equals(FavoritesControllerException.EnumExceptionType.INVALID_USER.toString())) {
-                            // TODO avisar que houve algum problema com usuario (talvez pedir pra fazer login de novo)
-                        } else {
-                            // TODO avisar que algo muito estranho aconteceu
-                        }
+                        // TODO avisar que houve algum problema com usuario (talvez pedir pra fazer login de novo)
                     }
                     startActivity(new Intent(AddFavoritesActivity.this, MainActivity.class));
                 }

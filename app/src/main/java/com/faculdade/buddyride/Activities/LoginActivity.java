@@ -8,6 +8,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.faculdade.buddyride.Controllers.Facade;
+import com.faculdade.buddyride.Entities.LoggedUser;
+import com.faculdade.buddyride.Exceptions.UserControllerException;
 import com.faculdade.buddyride.Helpers.ToastHelper;
 import com.faculdade.buddyride.R;
 
@@ -48,9 +51,14 @@ public class LoginActivity extends AppCompatActivity {
                     ToastHelper.showToast(getApplicationContext(), getString(R.string.empty_field));
                 }else{
                     //Do login
-                    startActivity(new Intent(LoginActivity.this, UserChoiceActivity.class));
+                    Facade facade = Facade.getInstance();
+                    try {
+                        facade.loginUser(catchEmail, catchPassword);
+                        startActivity(new Intent(LoginActivity.this, UserChoiceActivity.class));
+                    } catch (UserControllerException e) {
+                        ToastHelper.showToast(getApplicationContext(), getString(R.string.user_not_registered_or_wrong_password));
+                    }
                 }
-
             }
         });
 
@@ -70,9 +78,8 @@ public class LoginActivity extends AppCompatActivity {
                 startActivity(new Intent(LoginActivity.this, SecretQuestionActivity.class));
             }
         });
-
     }//closing onCreate
-}; //closing class
+} //closing class
 
 
 

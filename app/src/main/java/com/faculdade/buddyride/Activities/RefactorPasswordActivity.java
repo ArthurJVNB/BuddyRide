@@ -10,7 +10,6 @@ import android.widget.TextView;
 
 import com.faculdade.buddyride.Controllers.Facade;
 import com.faculdade.buddyride.Entities.LoggedUser;
-import com.faculdade.buddyride.Entities.User;
 import com.faculdade.buddyride.R;
 
 public class RefactorPasswordActivity extends AppCompatActivity {
@@ -29,8 +28,9 @@ public class RefactorPasswordActivity extends AppCompatActivity {
 
         mPassword = findViewById(R.id.password_field);
         mConfirmPassword = findViewById(R.id.confirmPassword_field);
-        mButtonConfirm = findViewById(R.id.button_Confirm);
+        mButtonConfirm = findViewById(R.id.button_confirm);
         mArrowBack = findViewById(R.id.button_arrowBack);
+        facade = Facade.getInstance();
 
         final String catchPassword = mPassword.getText().toString();
         String catchConfirmPassword = mConfirmPassword.getText().toString();
