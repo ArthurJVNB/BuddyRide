@@ -82,6 +82,20 @@ class UserController implements IUserController {
     }
 
     @Override
+    public boolean checkSecretAnswer(String id, String secretQuestion, String secretAnswer) throws UserControllerException {
+        boolean result;
+
+        if (mRepository.exists(id)) {
+            User user = mRepository.search(id);
+            result = user.checkSecretAnswer(secretQuestion, secretAnswer);
+        } else {
+            throw new UserControllerException(UserControllerException.EnumExceptionType.USER_NOT_FOUND);
+        }
+
+        return result;
+    }
+
+    @Override
     public void setUserStatus(String id, User.Status status) {
         User user = mRepository.search(id);
         user.setStatus(status);

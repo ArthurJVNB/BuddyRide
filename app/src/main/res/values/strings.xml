@@ -12,4 +12,13 @@
     <string name="empty_field">Empty field. Try again.</string>
     <string name="something_went_wrong">Something went wrong... Try again.</string>
     <string name="user_not_registered_or_wrong_password">User not registered or wrong password</string>
+    <string name="wrong_question_or_answer">Wrong question or answer. Sorry :(</string>
+    <string name="user_doesnt_exist">User doesn\'t exist</string>
+    <string name="passwords_must_match">Both passwords must match</string>
+    <string name="password_change_success">Password changed successfully :)</string>
+    <string name="hint_email">Email</string>
+    <string name="hint_question">Question</string>
+    <string name="hint_answer">Answer</string>
+    <string name="hint_new_password">New Password</string>
+    <string name="hint_confirm_password">Confirm Password</string>
 </resources>

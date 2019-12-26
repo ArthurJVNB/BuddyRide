@@ -13,6 +13,8 @@ public class UserRepositoryArrayList implements IRepository<User> {
     // ---------------------- SINGLETON ----------------------
     private UserRepositoryArrayList() {
         mRepository = new ArrayList<>();
+        mRepository.add(new User("Arthur", "Bezerra", "09/02/1993", "arthurjvnb@yahoo.com.br", "tt", "tá", "beleza"));
+        mRepository.add(new User("Raísa", "Bernardes", "02/09/1992", "rai@gmail.com", "tt", "água", "de beber"));
     }
 
     private static class Singleton {
